@@ -5,6 +5,7 @@ module.exports.profile = function(req,res){
     });
 }
 
+
 module.exports.post = function(req,res){
     res.render('user_post',{
         title: "User Post | Codeial",
