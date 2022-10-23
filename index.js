@@ -16,8 +16,13 @@ app.set('view engine','ejs');
 app.set('views','./views');
 
 
-
+// use asserts for static files 
 app.use(express.static('./asserts'));
+
+
+// extract link and put in head of layout
+app.set('layout extractStyles',true);
+app.set('layout extractScripts',true);
 
 
 

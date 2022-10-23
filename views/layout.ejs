@@ -8,7 +8,12 @@
         <%= title %>
     </title>
 
+    <!-- layout css -->
     <link rel="stylesheet" href="/css/layout.css">
+    
+
+    <!-- extract part css -->
+    <%- style %>
 </head>
 <body>
 
@@ -18,5 +23,8 @@
 
     <%- include('_footer'); %>
     
+
+    <!-- extract part script -->
+    <%- script %>
 </body>
 </html>
