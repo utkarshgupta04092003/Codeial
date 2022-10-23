@@ -17,6 +17,10 @@ app.set('views','./views');
 
 
 
+app.use(express.static('./asserts'));
+
+
+
 // server listen on given port
 app.listen(port,function(err){
     if(err){
