@@ -12,6 +12,7 @@ module.exports.post = function(req,res){
     });
 }
 
+// user signup controller
 module.exports.signUp = function(req,res){
 
     return res.render('user_sign_up',{
@@ -20,6 +21,7 @@ module.exports.signUp = function(req,res){
     })
 }
 
+// user signin controller
 module.exports.signIn = function(req,res){
 
     return res.render('user_sign_in',{
@@ -28,3 +30,12 @@ module.exports.signIn = function(req,res){
     })
 }
 
+// create user or signup
+module.exports.create = function(req,res){
+    // todo later
+}
+
+// login user
+module.exports.createSession = function(req,res){
+    // todo later
+}
