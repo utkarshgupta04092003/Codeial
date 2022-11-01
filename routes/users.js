@@ -15,6 +15,8 @@ router.get('/post',usersController.post);
 router.get('/sign-up',usersController.signUp);
 router.get('/sign-in',usersController.signIn);
 
+// create user through signup page
+router.post('/create',usersController.create);
 
 
 
