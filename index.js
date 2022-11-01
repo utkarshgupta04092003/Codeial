@@ -6,6 +6,12 @@ const db = require('./config/mongoose');
 
 const cookieParser = require('cookie-parser');
 
+const session = require('express-session');
+const passport = require('passport');
+const passportLocal = require('./config/passport-local-strategy');
+
+
+
 
 // import express ejs layouts
 const expressLayouts = require('express-ejs-layouts');
@@ -17,12 +23,33 @@ app.use(express.urlencoded());
 app.use(cookieParser());
 
 
-// use express routers
-app.use('/',require('./routes'))
-
 // set view engines
 app.set('view engine','ejs');
 app.set('views','./views');
+
+// session middleware
+app.use(session({
+    name: 'Codeial',
+    // todo change the secret befre deployment in production mode
+    secret: "blahsomething",
+    saveUninitialized: false,
+    resave: false,
+    cookie :{
+        maxAge: (100*60*100)
+    } 
+}));
+
+
+//passport session middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+
+// use express routers
+app.use('/',require('./routes'))
+
+
 
 
 // use asserts for static files 

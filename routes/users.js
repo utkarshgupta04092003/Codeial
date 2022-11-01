@@ -1,7 +1,7 @@
 // route for users
 const express = require('express');
 const router = express.Router();
-
+const passport = require('passport');
 // import user controller 
 const usersController = require('../controllers/users_controller');
 
@@ -18,6 +18,13 @@ router.get('/sign-in',usersController.signIn);
 // create user through signup page
 router.post('/create',usersController.create);
 
+// create session
+// first authenticate using passport and then go for createsession controller
+router.post('/create-session',passport.authenticate('local',
+    {
+        failureRedirect: '/useres/sign-in',
+    }
+),usersController.createSession);
 
 
 
