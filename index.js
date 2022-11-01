@@ -4,6 +4,9 @@ const port = 8000;
 const path = require('path');
 const db = require('./config/mongoose');
 
+const cookieParser = require('cookie-parser');
+
+
 // import express ejs layouts
 const expressLayouts = require('express-ejs-layouts');
 app.use(expressLayouts);
@@ -15,6 +18,11 @@ app.use('/',require('./routes'))
 // set view engines
 app.set('view engine','ejs');
 app.set('views','./views');
+
+
+// use middleware for cookie parser
+app.use(express.urlencoded());
+app.use(cookieParser());
 
 
 // use asserts for static files 

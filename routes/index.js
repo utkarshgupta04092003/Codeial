@@ -11,6 +11,8 @@ router.get('/',homeController.home);
 
 // route all user request to user controller
 router.use('/users',require('./users'));
+
+
 console.log('Router loaded');
 
 
