@@ -12,17 +12,17 @@ const expressLayouts = require('express-ejs-layouts');
 app.use(expressLayouts);
 
 
+// use middleware for cookie parser
+app.use(express.urlencoded());
+app.use(cookieParser());
+
+
 // use express routers
 app.use('/',require('./routes'))
 
 // set view engines
 app.set('view engine','ejs');
 app.set('views','./views');
-
-
-// use middleware for cookie parser
-app.use(express.urlencoded());
-app.use(cookieParser());
 
 
 // use asserts for static files 
