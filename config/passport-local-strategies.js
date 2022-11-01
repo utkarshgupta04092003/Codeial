@@ -33,13 +33,13 @@ passport.use(new localStrategy({
 
 
 
-// sertializing the user to decide which key is to be kept in the cookies
+// serializing the user to decide which key is to be kept in the cookies
 passport.serializeUser(function(user,done){
     done(null,user.id);
 })
 
 
-// desertializing the user from the key in the cookies
+// deserializing the user from the key in the cookies
 passport.deserializeUser(function(id,done){
     User.findById(id,function(err,user){
         if(err){
