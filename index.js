@@ -11,7 +11,7 @@ const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 
 // import connect mongo
-// const MongoStore = require('connect-mongo')(session);
+const MongoStore = require('connect-mongo');
 
 
 
@@ -39,16 +39,16 @@ app.use(session({
     cookie :{
         maxAge: (100*60*100)
     },
-    // store: new MongoStore({
+    store: new MongoStore({
         
-    //     mongooseConnection: db,
-    //     autoRemove: 'disabled'
+        mongoUrl: 'mongodb://localhost/codeial_development',
+        autoRemove: 'disabled'
         
-    // },
-    // function(err){
-    //     console.log(err|| 'Connect-mongo db setup ok');
-    // }) 
-
+    },
+    function(err){
+        console.log(err|| 'Connect-mongo db setup ok');
+    }) 
+   
 }));
 
 
