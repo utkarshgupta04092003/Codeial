@@ -85,3 +85,14 @@ module.exports.createSession = function(req,res){
 
     return res.redirect('/');
 }
+
+// signout or destroy session
+module.exports.destroySession = function(req,res){
+    // logout using through passport
+    req.logout(function(err) {
+        if (err) { return; }
+        res.redirect('/');
+      });
+
+    return res.redirect('/');
+}
