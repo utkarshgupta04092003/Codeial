@@ -13,6 +13,16 @@ const passportLocal = require('./config/passport-local-strategy');
 // import connect mongo
 const MongoStore = require('connect-mongo');
 
+const sassMiddleware = require('node-sass-middleware');
+
+// setup scss middleware
+app.use(sassMiddleware({
+    src: "/asserts/scss",
+    dest: "/asserts/css",
+    debug: true,
+    outputStyle: "extended",
+    prefix : "/css"
+}))
 
 
 // import express ejs layouts
