@@ -1,2 +1,24 @@
+* {
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; }
+
 footer {
-  color: green; }
+  color: white;
+  background-color: gray;
+  display: flex;
+  padding: 0.5rem; }
+  footer #copyrights {
+    width: 23%; }
+  footer #footer-links {
+    color: white;
+    display: flex;
+    justify-content: space-between; }
+    footer #footer-links ul {
+      list-style: none;
+      margin: 3px;
+      padding-right: 1rem; }
+      footer #footer-links ul a {
+        color: white;
+        text-decoration: none; }

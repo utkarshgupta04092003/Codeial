@@ -1,2 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif; }
+
 header {
-  color: red; }
+  color: white;
+  background-color: #2e51ec;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.51rem;
+  padding-left: 7px; }
+  header ul {
+    display: flex;
+    list-style: none;
+    font-weight: bold; }
+    header ul li {
+      margin: auto 10px; }
+      header ul li a {
+        text-decoration: none;
+        font-size: large;
+        color: white;
+        text-decoration: none; }
