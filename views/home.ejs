@@ -12,7 +12,6 @@
 
             <textarea name="content" cols="30" rows="3" placeholder="Type Here" required></textarea>
 
-            <p><%= locals.user %></p>
             <input type="submit" value="Post">
 
         </form>
@@ -22,10 +21,7 @@
 
                 <ul>
 
-                    <!-- <%= posts %> -->
                     <% for(post of posts){%>
-
-
                         <br>
                         <li>
                             <p>
@@ -34,6 +30,19 @@
                                         -<%= post.user.name%>
                                     </small>
                             </p>
+                           
+                            <div class="post-comments">
+                                <% if(locals.user){%>
+
+                                    <form action="/comments/create" method="POST">
+                                        <input type="text" name="content" placeholder="Type here to add Comment">
+                                        <input type="hidden" name="post" value="<%=post._id%>">
+
+                                        <input type="submit" value="Add Comment">
+
+                                    </form>
+                                    <%}%>
+                            </div>
                         </li>
 
 

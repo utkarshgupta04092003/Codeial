@@ -15,6 +15,9 @@ router.use('/users',require('./users'));
 // route to post controllers
 router.use('/posts',require('./posts'));
 
+// route to comment controllers
+router.use('/comments',require('./comments'));
+
 console.log('Router loaded');
 
 
