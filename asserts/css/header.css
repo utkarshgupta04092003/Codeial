@@ -18,7 +18,6 @@ header {
     header ul li {
       margin: auto 10px; }
       header ul li a {
-        text-decoration: none;
         font-size: large;
         color: white;
         text-decoration: none; }
