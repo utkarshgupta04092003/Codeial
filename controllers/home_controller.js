@@ -2,13 +2,16 @@ const Post = require('../models/post');
 
 module.exports.home = function(req,res){
 
-    // console.log(req.cookies);
-    // res.cookie('user_id',25);
+    console.log(req.cookies);
+    res.cookie('user_id',25);
 
-    Post.find({},function(err,posts){
+  
+
+    Post.find({}).populate('user').populate('user').exec(function(err,posts){
+
         if(err){
-            console.log('Error in fetching all post data from db');
-            return;
+             console.log('Error in fetching all post data from db',err);
+             return res.send('Error');
         }
 
         console.log('Home controller!');
@@ -18,7 +21,5 @@ module.exports.home = function(req,res){
         });
 
     })
-
     
 }
-
