@@ -30,3 +30,35 @@ module.exports.create = function(req,res){
 
 
 }
+
+
+module.exports.destroy = function(req,res){
+
+    Comment.findById(req.params.id,function(err,comment){
+
+        if(err){
+            console.log('Error in finding comment before deleting');
+            return res.send('Error in finding comment before deleting');
+        }
+
+        if((req.user.id == comment.user)){
+            // return res.send('User authorized');
+            // return res.send(comment.post+);
+
+            let postId = comment.post;
+            comment.remove();
+            
+            // remove from post.comment list
+            Post.findByIdAndUpdate(postId,{$pull: {comments:req.params.id}},function(err,post){
+                
+                return res.redirect('back');
+            })
+        
+        }
+        else{
+            return res.redirect('back');
+        }
+
+    })
+
+}

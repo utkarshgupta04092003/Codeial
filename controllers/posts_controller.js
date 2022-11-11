@@ -32,7 +32,7 @@ module.exports.destroy = function(req,res){
         }
         console.log(post);
         console.log(req.user.id);
-        
+        console.log('post ofuse ',post.user)
         if(post.user == req.user.id){
 
             console.log('Deleted successfulllu')
@@ -51,11 +51,4 @@ module.exports.destroy = function(req,res){
             return res.redirect('back');
         }
     })
-}
-
-module.exports.deleteComment = function(req,res){
-
-    console.log(req.params);
-
-
 }
