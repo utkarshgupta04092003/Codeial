@@ -2,10 +2,20 @@ const User = require('../models/user');
 
 // user controller 
 module.exports.profile = function(req,res){
-    return res.render('user_profile',{
-        title: "User Profile | Codeial",
 
-    });
+    User.findById(req.params.id,function(err,user){
+
+        if(err){
+            console.log('Error in finding user in usercontroller profile controller');
+            return;
+        }
+        return res.render('user_profile',{
+            title: "User Profile | Codeial",
+            profile_user: user
+    
+        });
+
+    })
 }
 
 

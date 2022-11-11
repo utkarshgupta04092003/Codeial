@@ -1,4 +1,5 @@
 const Post = require('../models/post');
+const User = require('../models/user');
 
 module.exports.home = function(req,res){
 
@@ -21,11 +22,21 @@ module.exports.home = function(req,res){
              return res.send('Error');
         }
 
-        console.log('Home controller!');
-        return res.render('./home',{
-            title: "Home | Codeial",
-            posts: posts 
-        });
+        User.find({},function(err,users){
+            if(err){
+                console.log('Error in finding All User details on home.ejs');
+                return;
+            }
+            console.log('Home controller!');
+            return res.render('./home',{
+                title: "Home | Codeial",
+                posts: posts,
+                all_users : users 
+            });
+
+            
+        })
+
 
     })
     
