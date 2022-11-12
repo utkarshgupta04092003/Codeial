@@ -5,12 +5,6 @@ const passport = require('passport');
 // import user controller 
 const usersController = require('../controllers/users_controller');
 
-
-// handle all user request
-router.get('/profile/:id',passport.checkAuthentication,usersController.profile);
-router.get('/post',usersController.post);
-
-
 // sign in and signup router
 
 router.get('/sign-up',usersController.signUp);
@@ -29,6 +23,22 @@ router.post('/create-session',passport.authenticate('local',
 
 // sign out or destroy session
 router.get('/sign-out',usersController.destroySession);
+
+
+
+
+// handle all user request
+router.get('/profile/:id',passport.checkAuthentication,usersController.profile);
+
+// update user profile route
+router.post('/update/:id',passport.checkAuthentication,usersController.update);
+
+
+
+
+
+
+
 
 
 module.exports = router;

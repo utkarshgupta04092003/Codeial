@@ -106,3 +106,30 @@ module.exports.destroySession = function(req,res){
 
     return res.redirect('/');
 }
+
+
+
+// update user profile 
+module.exports.update = function(req,res){
+    console.log(req.params.id);
+    
+    if(req.user.id == req.params.id){
+
+        User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
+            if(err){
+                console.log('error in fetching user data in user profile udpate of user_controllers');
+                return;
+            }
+    
+            return res.redirect('back');
+    
+        })
+    
+    }
+    else{
+        return res.status(401).send('UnAuthorized');
+    }
+
+
+}
+
