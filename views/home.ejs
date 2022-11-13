@@ -2,52 +2,54 @@
 <div id="home-container">
 
 
-    
-<section id="feed-posts">
 
-    <h3>Posts</h3>
+    <section id="feed-posts">
 
-    <% if(locals.user){%>
+        <h3>Posts</h3>
 
-        <form action="/posts/create" id="new-post-form" method="POST">
+        <% if(locals.user){%>
 
-            <textarea name="content" cols="30" rows="3" placeholder="Type Here" required></textarea>
+            <form action="/posts/create" id="new-post-form" method="POST">
 
-            <input type="submit" value="Post">
+                <textarea name="content" cols="30" rows="3" placeholder="Type Here" required></textarea>
 
-        </form>
-        <%}%>
+                <input type="submit" value="Post">
 
-            <div id="posts-list-container">
+            </form>
+            <%}%>
 
-                <ul>
+                <div id="posts-list-container">
 
-                    <% for(post of posts){%>
-                     
-                        <%- include('_post')-%>
-                        <%}%>
+                    <ul>
 
-                </ul>
-            </div>
+                        <% for(post of posts){%>
 
+                            <%- include('_post')-%>
+                                <%}%>
 
-</section>
+                    </ul>
+                </div>
 
 
-<section id="user-friends">
+    </section>
 
-    <% if(locals.user){%>
-    <h3>All Users</h3>
 
-        <% for(u of all_users){%>
+    <section id="user-friends">
 
-            <p>
-                <a href="/users/profile/<%= u.id %>"><%= u.name%></a>
-            </p>
+        <% if(locals.user){%>
+            <h3>All Users</h3>
 
-        <% } %>
+            <% for(u of all_users){%>
 
-    <% } %>
+                <p>
+                    <a href="/users/profile/<%= u.id %>">
+                        <%= u.name%>
+                    </a>
+                </p>
 
-</section>
+                <% } %>
+
+                    <% } %>
+
+    </section>
 </div>
