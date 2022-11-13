@@ -3,17 +3,23 @@ const app = express();
 const port = 8000;
 const path = require('path');
 const db = require('./config/mongoose');
-
 const cookieParser = require('cookie-parser');
-
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
-
 // import connect mongo
 const MongoStore = require('connect-mongo');
-
 const sassMiddleware = require('node-sass-middleware');
+// flash message
+const flash = require('connect-flash');
+const customMware = require('./config/middleware');
+
+
+
+
+
+
+
 
 // setup scss middleware
 app.use(sassMiddleware({
@@ -38,6 +44,7 @@ app.use(cookieParser());
 // set view engines
 app.set('view engine','ejs');
 app.set('views','./views');
+
 
 // session middleware
 app.use(session({
@@ -66,14 +73,18 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 // for each request set user is authenticate or not
 app.use(passport.setAuthenticatedUser);
 
 
+// setup flash messages
+app.use(flash());
+app.use(customMware.setFlash);
+
+
 // use express routers
 app.use('/',require('./routes'))
-
-
 
 
 // use asserts for static files 
@@ -83,6 +94,10 @@ app.use(express.static('./asserts'));
 // extract link and put in head of layout
 app.set('layout extractStyles',true);
 app.set('layout extractScripts',true);
+
+
+
+
 
 
 
