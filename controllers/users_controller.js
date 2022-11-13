@@ -9,6 +9,7 @@ module.exports.profile = function(req,res){
             console.log('Error in finding user in usercontroller profile controller');
             return;
         }
+        
         return res.render('user_profile',{
             title: "User Profile | Codeial",
             profile_user: user
@@ -58,6 +59,7 @@ module.exports.create = function(req,res){
     // check confirm password is same as password or not
 
     if(req.body.password != req.body.confirm_password){
+        req.flash('error','Password mismatched !')
         return res.redirect('back');
     }
 
@@ -76,11 +78,13 @@ module.exports.create = function(req,res){
                 }
                 
                 console.log('User create successfully!');
+                req.flash('success','Account Created Successfully !');
                 return res.redirect('/users/sign-in');
             })
         }
 
         else{
+            req.flash('error','User Already Exist !');
             return res.redirect('back');
         }
 
@@ -124,12 +128,15 @@ module.exports.update = function(req,res){
                 return;
             }
     
+
+            req.flash('success','Profile Updated Successfully !');
             return res.redirect('back');
     
         })
     
     }
     else{
+        req.flash('error','This user is not Allowed to edit !');
         return res.status(401).send('UnAuthorized');
     }
 

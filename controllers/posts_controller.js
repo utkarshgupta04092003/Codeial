@@ -13,12 +13,14 @@ module.exports.create = async function(req,res){
         
         console.log('post controller  create works');
 
+        req.flash('success','New Post Published !');
         return res.redirect('back');
 
     }
     catch{
 
         if(err){
+            req.flash('error',err);
             console.log('Error in creating a post');
             return;
         }
@@ -42,6 +44,7 @@ module.exports.destroy = async function(req,res){
             await Comment.deleteMany({post: post.id});
             post.remove();
             
+            req.flash('success','Post And Associated comments Deleted!');
             return res.redirect('back');
         }
         else{
@@ -51,6 +54,7 @@ module.exports.destroy = async function(req,res){
     }
     catch(err){
         console.log(err);
+        req.flash('error',err);
         return;
     }
 }
